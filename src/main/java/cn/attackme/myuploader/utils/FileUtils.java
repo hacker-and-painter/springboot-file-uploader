@@ -1,6 +1,8 @@
 package cn.attackme.myuploader.utils;
 
 
+import org.springframework.web.multipart.MultipartFile;
+
 import java.io.*;
 import java.util.UUID;
 
@@ -58,5 +60,15 @@ public class FileUtils {
      */
     public static String generateFileName() {
         return UUID.randomUUID().toString();
+    }
+
+    /**
+     * 获取文件扩展名
+     * @param file
+     * @return
+     */
+    public static String getExt(MultipartFile file) {
+        String fileName = file.getOriginalFilename();
+        return fileName.substring(fileName.lastIndexOf(".") + 1);
     }
 }

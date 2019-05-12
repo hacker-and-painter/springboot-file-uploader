@@ -11,7 +11,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,name,md5,path,upload_time
+        id,name,md5,path,upload_time,ext
     </sql>
 
     <select id="getById" parameterType="java.lang.Long" resultMap="BaseResultMap">
@@ -22,7 +22,7 @@
     </select>
 
     <insert id="save" parameterType="cn.attackme.myuploader.model.File" keyProperty="id" useGeneratedKeys="true">
-        insert into file(name,md5,path,upload_time) values(#{name},#{md5},#{path},#{uploadTime})
+        insert into file(name,md5,path,upload_time,ext) values(#{name},#{md5},#{path},#{uploadTime},#{ext})
     </insert>
 
     <update id="update" parameterType="cn.attackme.myuploader.model.File" >
@@ -40,6 +40,9 @@
                 </if>
                 <if test="uploadTime != null">
                     upload_time = #{uploadTime},
+                </if>
+                <if test="ext != null">
+                    ext = #{ext},
                 </if>
             </set>
             where id = #{id}

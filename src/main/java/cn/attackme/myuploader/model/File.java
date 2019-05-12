@@ -22,6 +22,7 @@ public class File implements Serializable {
     private String md5;
     private String path;
     private Date uploadTime;
+    private String ext; // 文件扩展名
 
     public File() {
     }
@@ -31,5 +32,13 @@ public class File implements Serializable {
         this.md5 = md5;
         this.path = path;
         this.uploadTime = uploadTime;
+    }
+
+    public File(String name, String md5, String path, Date uploadTime, String ext) {
+        this.name = name;
+        this.md5 = md5;
+        this.path = path;
+        this.uploadTime = uploadTime;
+        this.ext = ext;
     }
 }
